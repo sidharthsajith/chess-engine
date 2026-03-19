@@ -1,4 +1,4 @@
-# ♔ Grandmaster Ledger — Chess Engine
+# ♔ chess-mathengine
 
 A powerful chess engine with a premium web UI, built entirely with **pure JavaScript** — no frameworks, no dependencies. Play against an AI powered by minimax search with alpha-beta pruning.
 
@@ -39,8 +39,8 @@ No build tools or dependencies required. Just a browser.
 
 ```bash
 # Clone the repo
-git clone https://github.com/sidharthsajith/chess-engine.git
-cd chess-engine
+git clone https://github.com/sidharthsajith/chess-mathengine.git
+cd chess-mathengine
 
 # Serve locally (any static server works)
 python3 -m http.server 8080
@@ -51,7 +51,7 @@ Then open **http://localhost:8080** in your browser.
 ## 📁 Project Structure
 
 ```
-chess-engine/
+chess-mathengine/
 ├── index.html          # Main page structure
 ├── style.css           # Premium dark-mode UI styles
 ├── app.js              # UI controller (rendering, interactions, game flow)

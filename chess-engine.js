@@ -1,5 +1,5 @@
 // ============================================================================
-// PURE MATH CHESS ENGINE — JavaScript Port
+// chess-mathengine — JavaScript Port
 // Full chess logic: board, moves, validation, evaluation, minimax AI
 // ============================================================================
 

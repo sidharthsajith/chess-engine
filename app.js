@@ -1,5 +1,5 @@
 // ============================================================================
-// APP.JS — UI Controller for Grandmaster Ledger Chess Engine
+// APP.JS — UI Controller for chess-mathengine
 // ============================================================================
 
 (function () {

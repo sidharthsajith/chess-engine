@@ -34,7 +34,7 @@ def get_piece_symbol(piece: chess.Piece) -> str:
 
 def display_board(board: chess.Board, perspective: chess.Color = chess.WHITE, last_move: Optional[chess.Move] = None) -> None:
     clear_screen()
-    print(f"\n{BOLD}   === PURE MATH CHESS ENGINE ==={COLOR_RESET}")
+    print(f"\n{BOLD}   === CHESS-MATHENGINE ==={COLOR_RESET}")
     
     ranks = range(8) if perspective == chess.BLACK else range(7, -1, -1)
     files = range(7, -1, -1) if perspective == chess.BLACK else range(8)
@@ -168,7 +168,7 @@ def get_human_move(board: chess.Board) -> Optional[chess.Move]:
 
 def get_game_settings() -> Tuple[chess.Color, int, float]:
     clear_screen()
-    print(f"\n{BOLD}   === PURE MATH CHESS ENGINE ==={COLOR_RESET}")
+    print(f"\n{BOLD}   === CHESS-MATHENGINE ==={COLOR_RESET}")
     print("\n Welcome! Please choose your settings:")
     
     # Color
