@@ -1,64 +1,86 @@
-# Pure Math Chess Engine (TUI)
+# ♔ Grandmaster Ledger — Chess Engine
 
-A complete, standalone, terminal-based chess application written in pure Python. Play against a custom-built, math-based chess engine with a professional-grade text interface.
+A powerful chess engine with a premium web UI, built entirely with **pure JavaScript** — no frameworks, no dependencies. Play against an AI powered by minimax search with alpha-beta pruning.
 
-## 🚀 Features
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 
--   **Professional TUI**:
-    -   Unicode chess symbols (♔, ♚, ♘, ♞ etc.) for a sleek look.
-    -   ANSI color-coded board with highlight support for the last move.
-    -   Perspective-aware rendering (board flips when playing as Black).
-    -   Real-time captured pieces display.
-    -   Live engine thinking stats including Depth, NPS (Nodes Per Second), and PV (Principal Variation).
--   **Strong Chess Engine**:
-    -   **Minimax Search**: Explores the game tree to find optimal moves.
-    -   **Alpha-Beta Pruning**: Drastically reduces the search tree by discarding irrelevant branches.
-    -   **Quiescence Search**: Prevents tactical "horizon effect" by extending searches during captures.
-    -   **Iterative Deepening**: Progressively increases search depth for better time management.
-    -   **Tapered Evaluation**: Sophisticated evaluation function using Piece-Square Tables (PST) that interpolate between midgame and endgame phases.
-    -   **Move Ordering**: Optimizes search efficiency using MVV-LVA (Most Valuable Victim - Least Valuable Attacker) and promotion/check scoring.
-    -   **Transposition Table**: Caches evaluated positions using FEN keys to avoid redundant computations.
--   **Game Management**:
-    -   Supports **SAN** (Algebraic Notation like `e4`, `Nf3`) and **UCI** (`e2e4`) input.
-    -   Undo functionality, resignation, and draw offers.
-    -   Rematch system and PGN export.
+## ✨ Features
 
-## 🛠️ Technical Documentation
+### Web Interface
+- **Premium Dark UI** — Navy & gold color palette with glassmorphism effects
+- **Drag & Drop** — Click or drag pieces to make moves
+- **Legal Move Hints** — Gold dots for moves, red rings for captures
+- **Player Cards** — Live timers, captured pieces display
+- **Engine Analysis Panel** — Real-time eval, depth, nodes/sec, search time
+- **Move History** — Full SAN notation with move-by-move scrolling
+- **Evaluation Bar** — Visual position advantage indicator
+- **Responsive Design** — Works on desktop & mobile screens
 
-### Evaluation Function
-The engine uses a combination of piece values and positional bonuses. 
--   **Piece Values**: P=100, N=320, B=330, R=500, Q=900, K=20000.
--   **PST Bonuses**: Different tables for each piece type encourage development toward the center, king safety in the midgame, and king activity in the endgame.
--   **Game Phase**: The engine calculates the remaining non-pawn material to determine if it is in the "Midgame" or "Endgame," adjusting the King's PST accordingly.
+### Chess Engine
+- **Minimax Search** with alpha-beta pruning
+- **Iterative Deepening** with time-limited search
+- **Quiescence Search** — extends captures to avoid the horizon effect
+- **Transposition Table** — caches evaluated positions via FEN keys
+- **Move Ordering** — MVV-LVA + promotion/check scoring
+- **Tapered Evaluation** — piece-square tables that interpolate between midgame & endgame phases
 
-### Search Algorithm
-The search is based on the **Minimax** principle with **Alpha-Beta pruning**.
-1.  **Iterative Deepening**: The engine starts at depth 1 and increases until it reaches the target depth or the time limit expires.
-2.  **Move Ordering**: To make Alpha-Beta pruning most effective, the engine sorts moves by potential value (captures of high-value pieces first).
-3.  **Transposition Table**: Every evaluated position is stored in a dictionary. If the engine encounters the same position through a different move order, it retrieves the stored score immediately.
+### Game Management
+- **4 Difficulty Levels** — Easy (depth 2) → Brutal (depth 6)
+- **Play as White, Black, or Random**
+- **Undo, Flip Board, Resign**
+- **Promotion Picker** modal
+- **Game Over Detection** — checkmate, stalemate, draws, insufficient material
 
-## 🎮 How to Play
+## 🚀 Quick Start
 
-### Prerequisites
--   Python 3.9+
--   `python-chess` library
+No build tools or dependencies required. Just a browser.
+
+```bash
+# Clone the repo
+git clone https://github.com/sidharthsajith/chess-engine.git
+cd chess-engine
+
+# Serve locally (any static server works)
+python3 -m http.server 8080
+```
+
+Then open **http://localhost:8080** in your browser.
+
+## 📁 Project Structure
+
+```
+chess-engine/
+├── index.html          # Main page structure
+├── style.css           # Premium dark-mode UI styles
+├── app.js              # UI controller (rendering, interactions, game flow)
+├── chess-engine.js     # Core chess engine (move gen, AI, evaluation)
+├── chess_tui_engine.py # Original Python TUI engine
+└── README.md
+```
+
+## 🎮 Terminal Version (Python)
+
+The original TUI engine is also included:
 
 ```bash
 pip install chess
-```
-
-### Running the Game
-Simply run the main script:
-```bash
 python3 chess_tui_engine.py
 ```
 
-### Controls
--   **Move**: Type standard algebraic notation (e.g., `e4`, `Nf3`, `O-O`) or UCI (e.g., `e2e4`).
--   **? / help**: Show all legal moves in the current position.
--   **undo**: Revert your last move (and the engine's response).
--   **resign**: Concede the game.
--   **draw**: Offer a draw to the engine.
+**TUI Controls:** `e4`, `Nf3`, `O-O` (algebraic notation) or `e2e4` (UCI) · `undo` · `resign` · `draw` · `? / help`
+
+## 🛠️ Technical Details
+
+| Component | Details |
+|---|---|
+| **Piece Values** | P=100, N=320, B=330, R=500, Q=900, K=20000 |
+| **Search** | Iterative deepening + alpha-beta + quiescence |
+| **Eval** | Tapered midgame/endgame PST interpolation |
+| **Move Ordering** | MVV-LVA, promotions, checks |
+| **Time Control** | Per-depth time limits (1s–15s) |
 
 ## 📜 License
+
 This project is for educational purposes. Feel free to modify and expand upon it!
